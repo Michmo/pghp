@@ -29,10 +29,6 @@ class RenderingWidget : public QGLWidget
 
     Camera mCam;
 
-    //Position de la caméra
-    Eigen::Vector3f position;
-    //Point de visé de la caméra
-    Eigen::Vector3f target;
     //Potision de l'avatar
     Eigen::Vector3f move;
     //Matrice de rotation de l'avatar

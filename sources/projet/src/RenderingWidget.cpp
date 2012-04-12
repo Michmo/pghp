@@ -18,14 +18,15 @@ RenderingWidget::RenderingWidget()
       fieldMesh(0)
     ,avatarMesh(0)
     ,mCam()
-    ,position(200,15,0)
     ,move(200,20,0)
 
 {
+    mCam.setPosition(Eigen::Vector3f(200,15,0));
+    mCam.setTarget(move);
+    mCam.setZoom(Eigen::Vector3f(0,20,20));
     scene = Matrix4f::Identity();
-    target = move;
     obj = new Object[2];
-    mCam.lookAt(position, target, Vector3f::UnitZ());
+    mCam.lookAt(mCam.getPosition(), mCam.getTarget(), Vector3f::UnitZ());
     mCam.setPerspective(50*(M_PI)/100,1,0.2,1000000);
     transfoAvatar = Matrix4f::Identity();
 }
@@ -44,7 +45,7 @@ void RenderingWidget::paintGL()
     // configure the rendering target size (viewport)
     glViewport(0, 0, mVpWidth, mVpHeight);
 
-    mCam.lookAt(position, target, Vector3f::UnitZ());
+    mCam.lookAt(mCam.getPosition(), mCam.getTarget(), Vector3f::UnitZ());
 
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 
@@ -64,7 +65,7 @@ void RenderingWidget::paintGL()
     glUniform3f(avatarProgram.getUniformLocation("lightColor"), 1, 1, 1);
     glUniform1f(avatarProgram.getUniformLocation("shininess"), 50);
     glUniform3f(avatarProgram.getUniformLocation("move"), move.x(), move.y(), move.z());
-    glUniform3f(avatarProgram.getUniformLocation("posCam"), position.x(), position.y(), position.z());
+    glUniform3f(avatarProgram.getUniformLocation("posCam"), mCam.getPosition().x(), mCam.getPosition().y(), mCam.getPosition().z());
     GL_TEST_ERR;
 
     glActiveTexture(GL_TEXTURE2);
@@ -88,7 +89,7 @@ void RenderingWidget::paintGL()
     glUniform3f(fieldProgram.getUniformLocation("lightDir"), 1, 1, 1);
     glUniform3f(fieldProgram.getUniformLocation("lightColor"), 1, 1, 1);
     glUniform1f(fieldProgram.getUniformLocation("shininess"), 10000);
-    glUniform3f(fieldProgram.getUniformLocation("posCam"), position.x(), position.y(), position.z());
+    glUniform3f(fieldProgram.getUniformLocation("posCam"), mCam.getPosition().x(),mCam.getPosition().y(), mCam.getPosition().z());
     GL_TEST_ERR;
 
     glActiveTexture(GL_TEXTURE1);
@@ -147,14 +148,14 @@ void RenderingWidget::createScene()
 
   avatarMesh = new Mesh(PGHP_DIR"/data/rockling-horse.obj");
   avatarMesh->Mesh::makeUnitary();
-  avatarMesh->Mesh::computeNormals();
+  avatarMesh->Mesh::computeNormalsPosition();
   avatarMesh->Mesh::Initialize();
   obj[1].attachMesh(avatarMesh);
   obj[1].attachShader(&avatarProgram);
 
   move.z() = fieldMesh->findZ(move.x(), move.y());
-  position.z() = fieldMesh->findZ(position.x(), position.y());
-  target = move;
+  mCam.getPosition().z() = fieldMesh->findZ(mCam.getPosition().x(), mCam.getPosition().y());
+  mCam.setTarget(move);
 }
 
 
@@ -173,13 +174,11 @@ void RenderingWidget::keyPressEvent(QKeyEvent * e)
         updateGL();
         break;
     case Qt::Key_Plus:
-        mCam.setPosY(mCam.getPosY() - 1);
-        mCam.setPosZ(mCam.getPosZ() - 1);
+        mCam.setZoom(Eigen::Vector3f(mCam.getZoom().x(), mCam.getZoom().y()-1, mCam.getZoom().z()-1));
         updateGL();
         break;
     case Qt::Key_Minus:
-        mCam.setPosY(mCam.getPosY() + 1);
-        mCam.setPosZ(mCam.getPosZ() + 1);
+        mCam.setZoom(Eigen::Vector3f(mCam.getZoom().x(), mCam.getZoom().y()+1, mCam.getZoom().z()+1));
         updateGL();
         break;
     case Qt::Key_Up:
@@ -222,12 +221,13 @@ void RenderingWidget::keyPressEvent(QKeyEvent * e)
     default:
         break;
     }
-    //déplacement de la cheval.
-    target = move;
-    position.x() = move.x();
-    position.y() = move.y() - mCam.getPosY();
-    position.z() = fieldMesh->findZ(position.x(), position.y()) + mCam.getPosZ();
-    //!déplacement de la cheval.
+    mCam.setTarget(move);
+    mCam.setPosition(Eigen::Vector3f(move.x(),
+                                     move.y()-mCam.getZoom().y(),
+                                     fieldMesh->findZ(mCam.getPosition().x(), mCam.getPosition().z())+mCam.getZoom().z()));
+//    position.x() = move.x();
+//    position.y() = move.y() - mCam.getPosY();
+//    position.z() = fieldMesh->findZ(position.x(), position.y()) + mCam.getPosZ();
 }
 
 #include <RenderingWidget.moc>

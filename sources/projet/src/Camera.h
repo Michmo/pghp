@@ -6,9 +6,15 @@
 
 class Camera
 {
+
+protected:
+    Eigen::Matrix4f mViewMatrix;
+    Eigen::Matrix4f mProjectionMatrix;
+
 private:
-    int posY;
-    int posZ;
+    Eigen::Vector3f mPosition;
+    Eigen::Vector3f mTarget;
+    Eigen::Vector3f mZoom;
 
 public:
     Camera();
@@ -22,21 +28,29 @@ public:
 
     /** Returns the affine transformation matrix from the global space to the camera space */
     const Eigen::Matrix4f& viewMatrix(void) const;
+
     /** Returns the perspective projection matrix */
     const Eigen::Matrix4f& projectionMatrix(void) const;
 
-    int getPosY();
-    int getPosZ();
-    void setPosY(int y);
-    void setPosZ(int z);
+    /** Set the position of the camera */
+    void setPosition(Eigen::Vector3f pos);
 
+    /** Get the position of the camera */
+    Eigen::Vector3f getPosition();
+
+    /** Set the target point of the camera */
+    void setTarget(Eigen::Vector3f tar);
+
+    /** Get the target point of the camera */
+    Eigen::Vector3f getTarget();
+
+    void setZoom(Eigen::Vector3f zoo);
+
+    Eigen::Vector3f getZoom();
 protected:
     void updateViewMatrix() const;
     void updateProjectionMatrix() const;
 
-protected:
-    Eigen::Matrix4f mViewMatrix;
-    Eigen::Matrix4f mProjectionMatrix;
 };
 
 #endif // EIGEN_CAMERA_H

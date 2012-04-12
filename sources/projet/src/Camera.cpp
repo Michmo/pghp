@@ -7,8 +7,6 @@ Camera::Camera()
 {
     mViewMatrix.setIdentity();
     mProjectionMatrix.setIdentity();
-    posY = 5;
-    posZ = 5;
 }
 
 Camera::~Camera()
@@ -50,18 +48,32 @@ const Matrix4f& Camera::projectionMatrix() const
   return mProjectionMatrix;
 }
 
-int Camera::getPosY() {
-  return this->posY;
+Eigen::Vector3f
+Camera::getPosition(){
+    return this->mPosition;
 }
 
-int Camera::getPosZ() {
-  return this->posZ;
+void
+Camera::setPosition(Eigen::Vector3f pos){
+    this->mPosition = pos;
 }
 
-void Camera::setPosY(int y) {
-  this->posY = y;
+Eigen::Vector3f
+Camera::getTarget(){
+    return this->mTarget;
 }
 
-void Camera::setPosZ(int z) {
-  this->posZ = z;
+void
+Camera::setTarget(Eigen::Vector3f tar){
+    this->mTarget = tar;
+}
+
+Eigen::Vector3f
+Camera::getZoom(){
+    return this->mZoom;
+}
+
+void
+Camera::setZoom(Eigen::Vector3f zoo){
+    this->mZoom = zoo;
 }
