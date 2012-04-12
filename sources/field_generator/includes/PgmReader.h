@@ -20,9 +20,9 @@ public:
     bool readPgmFile();
 
     /* Getters & setters */
-    unsigned short getPixValue(int i);
-    unsigned short getPixValue(int i, int j);
-    vector<unsigned short> getPixValues();
+    float getPixValue(int i);
+    float getPixValue(int i, int j);
+    vector<float> getPixValues();
     int getHeight();
     int getWidth();
 
@@ -30,7 +30,7 @@ protected:
     char *filename;
     int width;
     int height;
-    vector<unsigned short> pixValues;
+    vector<float> pixValues;
 };
 
 #endif // PGMREADER_H

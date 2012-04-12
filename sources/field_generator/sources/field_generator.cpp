@@ -36,17 +36,17 @@ void generateField(int w, int h, char *local_filename, char *project_filename, P
     content << numVertices << " " << numFaces << " " << 0 << endl;
     for(int i = 0; i < h; i++){
       for(int j = 0; j < w; j++){
-	content << i << " " << j << " " << -(pr.getPixValue(i, j))/3 << endl;
+	content << i << " " << j << " " << -(pr.getPixValue(i, j))/8.0 << endl;
       }
     }
     for(int i = 0; i < numVertices; i++){
       if(i%w != (w-1)){
 	if(i < w){
-	  content << "3" << " " << i << " " << i+1 << " " << i+w << endl;
+	  content << "3" << " " << i << " " << i+w << " " << i+1 << endl;
 	  numFaces++;
 	}else if(i < numVertices-w){
-	  content << "3" << " " << i << " " << i+1 << " " << i+w << endl;
 	  content << "3" << " " << i << " " << i+1 << " " << i+1-w << endl;
+	  content << "3" << " " << i << " " << i+w << " " << i+1 << endl;
 	  numFaces += 2;
 	}else{
 	  content << "3" << " " << i << " " << i+1 << " " << i+1-w << endl;

@@ -41,11 +41,11 @@ bool PgmReader::readPgmFile(){
     }
 }
 
-unsigned short PgmReader::getPixValue(int i){
+float PgmReader::getPixValue(int i){
     return this->pixValues[i];
 }
 
-unsigned short PgmReader::getPixValue(int i, int j){
+float PgmReader::getPixValue(int i, int j){
     return this->pixValues[i*this->width+j];
 }
 
@@ -57,6 +57,6 @@ int PgmReader::getWidth(){
     return this->width;
 }
 
-vector<unsigned short> PgmReader::getPixValues(){
+vector<float> PgmReader::getPixValues(){
   return this->pixValues;
 }
