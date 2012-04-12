@@ -1,0 +1,17 @@
+
+Dépendances:
+- Qt4
+- Eigen 3.x
+- Cmake
+- OpenGL 3.x
+
+Pour compiler:
+
+$ mkdir build
+$ cd build
+$ cmake ..
+$ make
+
+Pour lancer la demo:
+$ ./pghp
+

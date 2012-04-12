@@ -1,0 +1,46 @@
+project(pghp)
+
+cmake_minimum_required(VERSION 2.6)
+
+
+if (NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE "RelWithDebInfo")
+endif()
+
+set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
+
+find_package(Qt4 REQUIRED)
+find_package(OpenGL REQUIRED)
+find_package(Eigen3 "3.0.3" REQUIRED)
+
+set(QT_USE_QTOPENGL TRUE)
+include(${QT_USE_FILE})
+
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+include_directories( ${QT_INCLUDE_DIR} )
+include_directories( ${EIGEN3_INCLUDE_DIR} )
+include_directories( ${PROJECT_SOURCE_DIR}/src )
+
+add_definitions(-DPGHP_DIR="${PROJECT_SOURCE_DIR}")
+add_definitions(-DEIGEN_DONT_ALIGN_STATICALLY)
+
+if(APPLE)
+  set(APPLE_WORKAROUND_SRCS src/core_profile_attributes.mm)
+endif()
+
+# the list of source files
+set(pghp_SRCS src/Camera.cpp ObjFormat/ObjFormat.cpp ObjFormat/ObjUtil.cpp src/RenderingWidget.cpp src/Shader.cpp src/Object.cpp src/Mesh.cpp src/main.cpp ${APPLE_WORKAROUND_SRCS})
+
+qt4_automoc(${pghp_SRCS})
+
+add_executable(pghp ${pghp_SRCS})
+
+target_link_libraries(pghp
+  ${QT_QTCORE_LIBRARY}    ${QT_QTGUI_LIBRARY}
+  ${QT_QTOPENGL_LIBRARY}  ${OPENGL_LIBRARIES}
+)
+
+if(APPLE)
+  target_link_libraries(pghp "-framework Foundation" "-framework Cocoa")
+endif()
