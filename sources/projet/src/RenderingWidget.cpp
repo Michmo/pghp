@@ -148,7 +148,7 @@ void RenderingWidget::createScene()
 
   avatarMesh = new Mesh(PGHP_DIR"/data/rockling-horse.obj");
   avatarMesh->Mesh::makeUnitary();
-  avatarMesh->Mesh::computeNormalsPosition();
+  avatarMesh->Mesh::computeNormals();
   avatarMesh->Mesh::Initialize();
   obj[1].attachMesh(avatarMesh);
   obj[1].attachShader(&avatarProgram);
