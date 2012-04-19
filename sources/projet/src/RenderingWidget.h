@@ -5,11 +5,13 @@
 #include "OpenGL.h"
 #include <QGLWidget>
 #include <QApplication>
+#include <QTimer>
 
 #include "Shader.h"
 #include "Mesh.h"
 #include "Camera.h"
 #include "Object.h"
+#include <cmath>
 
 
 class RenderingWidget : public QGLWidget
@@ -35,6 +37,8 @@ class RenderingWidget : public QGLWidget
     Eigen::Matrix4f transfoAvatar;
     //Matrice de la scène
     Eigen::Matrix4f scene;
+
+    bool key[256];
 
 
     GLuint neige;
@@ -62,9 +66,18 @@ protected:
 
     /** This method is automatically called by Qt everytime a key is pressed */
     void keyPressEvent(QKeyEvent * e);
+    void keyReleaseEvent(QKeyEvent * e);
+
+    void moveScene();
 
     /** Internal function to setup the 3D scene */
     virtual void createScene();
+
+    void run();
+
+
+public slots:
+    void affichage();
 
 public:
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW

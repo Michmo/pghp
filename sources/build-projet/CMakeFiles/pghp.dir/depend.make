@@ -890,6 +890,7 @@ CMakeFiles/pghp.dir/src/RenderingWidget.cpp.o: /usr/include/qt4/Qt3Support/q3val
 CMakeFiles/pghp.dir/src/RenderingWidget.cpp.o: /usr/include/qt4/QtCore/QPoint
 CMakeFiles/pghp.dir/src/RenderingWidget.cpp.o: /usr/include/qt4/QtCore/QPointF
 CMakeFiles/pghp.dir/src/RenderingWidget.cpp.o: /usr/include/qt4/QtCore/QString
+CMakeFiles/pghp.dir/src/RenderingWidget.cpp.o: /usr/include/qt4/QtCore/QTimer
 CMakeFiles/pghp.dir/src/RenderingWidget.cpp.o: /usr/include/qt4/QtCore/qalgorithms.h
 CMakeFiles/pghp.dir/src/RenderingWidget.cpp.o: /usr/include/qt4/QtCore/qatomic.h
 CMakeFiles/pghp.dir/src/RenderingWidget.cpp.o: /usr/include/qt4/QtCore/qatomic_alpha.h
@@ -916,6 +917,7 @@ CMakeFiles/pghp.dir/src/RenderingWidget.cpp.o: /usr/include/qt4/QtCore/qatomic_w
 CMakeFiles/pghp.dir/src/RenderingWidget.cpp.o: /usr/include/qt4/QtCore/qatomic_windowsce.h
 CMakeFiles/pghp.dir/src/RenderingWidget.cpp.o: /usr/include/qt4/QtCore/qatomic_x86_64.h
 CMakeFiles/pghp.dir/src/RenderingWidget.cpp.o: /usr/include/qt4/QtCore/qbasicatomic.h
+CMakeFiles/pghp.dir/src/RenderingWidget.cpp.o: /usr/include/qt4/QtCore/qbasictimer.h
 CMakeFiles/pghp.dir/src/RenderingWidget.cpp.o: /usr/include/qt4/QtCore/qbuffer.h
 CMakeFiles/pghp.dir/src/RenderingWidget.cpp.o: /usr/include/qt4/QtCore/qbytearray.h
 CMakeFiles/pghp.dir/src/RenderingWidget.cpp.o: /usr/include/qt4/QtCore/qchar.h
@@ -955,6 +957,7 @@ CMakeFiles/pghp.dir/src/RenderingWidget.cpp.o: /usr/include/qt4/QtCore/qstringbu
 CMakeFiles/pghp.dir/src/RenderingWidget.cpp.o: /usr/include/qt4/QtCore/qstringlist.h
 CMakeFiles/pghp.dir/src/RenderingWidget.cpp.o: /usr/include/qt4/QtCore/qstringmatcher.h
 CMakeFiles/pghp.dir/src/RenderingWidget.cpp.o: /usr/include/qt4/QtCore/qt_windows.h
+CMakeFiles/pghp.dir/src/RenderingWidget.cpp.o: /usr/include/qt4/QtCore/qtimer.h
 CMakeFiles/pghp.dir/src/RenderingWidget.cpp.o: /usr/include/qt4/QtCore/qvariant.h
 CMakeFiles/pghp.dir/src/RenderingWidget.cpp.o: /usr/include/qt4/QtCore/qvector.h
 CMakeFiles/pghp.dir/src/RenderingWidget.cpp.o: /usr/include/qt4/QtGui/QApplication
@@ -1296,6 +1299,7 @@ CMakeFiles/pghp.dir/src/main.cpp.o: /usr/include/qt4/Qt3Support/q3valuelist.h
 CMakeFiles/pghp.dir/src/main.cpp.o: /usr/include/qt4/QtCore/QPoint
 CMakeFiles/pghp.dir/src/main.cpp.o: /usr/include/qt4/QtCore/QPointF
 CMakeFiles/pghp.dir/src/main.cpp.o: /usr/include/qt4/QtCore/QString
+CMakeFiles/pghp.dir/src/main.cpp.o: /usr/include/qt4/QtCore/QTimer
 CMakeFiles/pghp.dir/src/main.cpp.o: /usr/include/qt4/QtCore/qalgorithms.h
 CMakeFiles/pghp.dir/src/main.cpp.o: /usr/include/qt4/QtCore/qatomic.h
 CMakeFiles/pghp.dir/src/main.cpp.o: /usr/include/qt4/QtCore/qatomic_alpha.h
@@ -1322,6 +1326,7 @@ CMakeFiles/pghp.dir/src/main.cpp.o: /usr/include/qt4/QtCore/qatomic_windows.h
 CMakeFiles/pghp.dir/src/main.cpp.o: /usr/include/qt4/QtCore/qatomic_windowsce.h
 CMakeFiles/pghp.dir/src/main.cpp.o: /usr/include/qt4/QtCore/qatomic_x86_64.h
 CMakeFiles/pghp.dir/src/main.cpp.o: /usr/include/qt4/QtCore/qbasicatomic.h
+CMakeFiles/pghp.dir/src/main.cpp.o: /usr/include/qt4/QtCore/qbasictimer.h
 CMakeFiles/pghp.dir/src/main.cpp.o: /usr/include/qt4/QtCore/qbuffer.h
 CMakeFiles/pghp.dir/src/main.cpp.o: /usr/include/qt4/QtCore/qbytearray.h
 CMakeFiles/pghp.dir/src/main.cpp.o: /usr/include/qt4/QtCore/qchar.h
@@ -1361,6 +1366,7 @@ CMakeFiles/pghp.dir/src/main.cpp.o: /usr/include/qt4/QtCore/qstringbuilder.h
 CMakeFiles/pghp.dir/src/main.cpp.o: /usr/include/qt4/QtCore/qstringlist.h
 CMakeFiles/pghp.dir/src/main.cpp.o: /usr/include/qt4/QtCore/qstringmatcher.h
 CMakeFiles/pghp.dir/src/main.cpp.o: /usr/include/qt4/QtCore/qt_windows.h
+CMakeFiles/pghp.dir/src/main.cpp.o: /usr/include/qt4/QtCore/qtimer.h
 CMakeFiles/pghp.dir/src/main.cpp.o: /usr/include/qt4/QtCore/qvariant.h
 CMakeFiles/pghp.dir/src/main.cpp.o: /usr/include/qt4/QtCore/qvector.h
 CMakeFiles/pghp.dir/src/main.cpp.o: /usr/include/qt4/QtGui/QApplication

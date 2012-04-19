@@ -891,6 +891,7 @@ CMakeFiles/pghp.dir/src/RenderingWidget.cpp.o
  /usr/include/qt4/QtCore/QPoint
  /usr/include/qt4/QtCore/QPointF
  /usr/include/qt4/QtCore/QString
+ /usr/include/qt4/QtCore/QTimer
  /usr/include/qt4/QtCore/qalgorithms.h
  /usr/include/qt4/QtCore/qatomic.h
  /usr/include/qt4/QtCore/qatomic_alpha.h
@@ -917,6 +918,7 @@ CMakeFiles/pghp.dir/src/RenderingWidget.cpp.o
  /usr/include/qt4/QtCore/qatomic_windowsce.h
  /usr/include/qt4/QtCore/qatomic_x86_64.h
  /usr/include/qt4/QtCore/qbasicatomic.h
+ /usr/include/qt4/QtCore/qbasictimer.h
  /usr/include/qt4/QtCore/qbuffer.h
  /usr/include/qt4/QtCore/qbytearray.h
  /usr/include/qt4/QtCore/qchar.h
@@ -956,6 +958,7 @@ CMakeFiles/pghp.dir/src/RenderingWidget.cpp.o
  /usr/include/qt4/QtCore/qstringlist.h
  /usr/include/qt4/QtCore/qstringmatcher.h
  /usr/include/qt4/QtCore/qt_windows.h
+ /usr/include/qt4/QtCore/qtimer.h
  /usr/include/qt4/QtCore/qvariant.h
  /usr/include/qt4/QtCore/qvector.h
  /usr/include/qt4/QtGui/QApplication
@@ -1297,6 +1300,7 @@ CMakeFiles/pghp.dir/src/main.cpp.o
  /usr/include/qt4/QtCore/QPoint
  /usr/include/qt4/QtCore/QPointF
  /usr/include/qt4/QtCore/QString
+ /usr/include/qt4/QtCore/QTimer
  /usr/include/qt4/QtCore/qalgorithms.h
  /usr/include/qt4/QtCore/qatomic.h
  /usr/include/qt4/QtCore/qatomic_alpha.h
@@ -1323,6 +1327,7 @@ CMakeFiles/pghp.dir/src/main.cpp.o
  /usr/include/qt4/QtCore/qatomic_windowsce.h
  /usr/include/qt4/QtCore/qatomic_x86_64.h
  /usr/include/qt4/QtCore/qbasicatomic.h
+ /usr/include/qt4/QtCore/qbasictimer.h
  /usr/include/qt4/QtCore/qbuffer.h
  /usr/include/qt4/QtCore/qbytearray.h
  /usr/include/qt4/QtCore/qchar.h
@@ -1362,6 +1367,7 @@ CMakeFiles/pghp.dir/src/main.cpp.o
  /usr/include/qt4/QtCore/qstringlist.h
  /usr/include/qt4/QtCore/qstringmatcher.h
  /usr/include/qt4/QtCore/qt_windows.h
+ /usr/include/qt4/QtCore/qtimer.h
  /usr/include/qt4/QtCore/qvariant.h
  /usr/include/qt4/QtCore/qvector.h
  /usr/include/qt4/QtGui/QApplication

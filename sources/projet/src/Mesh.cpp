@@ -291,28 +291,12 @@ float Mesh::findZ(float x, float y) {
     z += mVertices[cy+fx*640].position.z();
     z += mVertices[cy+cx*640].position.z();
     z /= 4;
-    cout << "x = " << x << "y = " << y << "z = " << z << endl;
+    //cout << "x = " << x << "y = " << y << "z = " << z << endl;
     return z;
 }
 
 Eigen::Vector3f Mesh::findNormal(float x, float y){
   Eigen::Vector3f normal = Eigen::Vector3f::UnitX();
-//  for(VertexArray::iterator vx=mVertices.begin(); vx!=mVertices.end(); ++vx){
-//    if(vx->position.x() <= x+0.5 && vx->position.x() > x-0.5
-//       && vx->position.y() < y+0.5 && vx->position.y() > y-0.5 ){
-//      if(vx->normal.x() >= 0 && vx->normal.y() >= 0 && vx->normal.z() >= 0){
-//        normal.x() = vx->normal.x();
-//        normal.y() = vx->normal.y();
-//        normal.z() = vx->normal.z();
-//      }
-//      else{
-//        normal.x() = 0;
-//        normal.y() = 0;
-//        normal.z() = 0;
-//      }
-//    }
-//  }
-//  return normal;
   int cx, cy, fx, fy;
   cx = ceil(x);
   cy = ceil(y);

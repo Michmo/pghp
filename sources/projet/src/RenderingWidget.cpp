@@ -29,6 +29,9 @@ RenderingWidget::RenderingWidget()
     mCam.lookAt(mCam.getPosition(), mCam.getTarget(), Vector3f::UnitZ());
     mCam.setPerspective(50*(M_PI)/100,1,0.2,1000000);
     transfoAvatar = Matrix4f::Identity();
+
+    for(int i = 0; i < 256; ++i)
+        key[i] = 0;
 }
 
 RenderingWidget::~RenderingWidget()
@@ -156,78 +159,109 @@ void RenderingWidget::createScene()
   move.z() = fieldMesh->findZ(move.x(), move.y());
   mCam.getPosition().z() = fieldMesh->findZ(mCam.getPosition().x(), mCam.getPosition().y());
   mCam.setTarget(move);
+
+  run();
 }
 
-
-void RenderingWidget::keyPressEvent(QKeyEvent * e)
-{
-    float zMove;
-
-    switch(e->key())
-    {
-    case Qt::Key_1:
-        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-        updateGL();
-        break;
-    case Qt::Key_2:
-        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-        updateGL();
-        break;
-    case Qt::Key_Plus:
-        mCam.setZoom(Eigen::Vector3f(mCam.getZoom().x(), mCam.getZoom().y()-1, mCam.getZoom().z()-1));
-        updateGL();
-        break;
-    case Qt::Key_Minus:
-        mCam.setZoom(Eigen::Vector3f(mCam.getZoom().x(), mCam.getZoom().y()+1, mCam.getZoom().z()+1));
-        updateGL();
-        break;
-    case Qt::Key_Up:
-      zMove =  fieldMesh->findZ(move.x(), move.y() + 0.5);
-      //if(zMove <= 0) {
-        move.z() = zMove;
-        move.y() += 0.5;
-      //}
-        //transfoAvatar = avatarMesh->orientMesh(move,Eigen::Vector3f(move.x(),move.y(),move.z()),fieldMesh->findNormal(move.x(),move.y()));
-        //cout << transfoAvatar <<endl;
-        updateGL();
-        break;
-    case Qt::Key_Down:
-      zMove =  fieldMesh->findZ(move.x(), move.y() - 0.5);
-      //if(zMove <= 0) {
-        move.z() = zMove;
-        move.y() -= 0.5;
-      //}
-        updateGL();
-        break;
-    case Qt::Key_Left:
-      zMove =  fieldMesh->findZ(move.x() - 0.5, move.y());
-      //if(zMove <= 0){
-        move.z() = zMove;
-        move.x() -= 0.5;
-      //}
-        updateGL();
-        break;
-    case Qt::Key_Right:
-      zMove =  fieldMesh->findZ(move.x() + 0.5, move.y());
-      //if(zMove <= 0){
-        move.z() = zMove;
-        move.x() += 0.5;
-      //}
-        updateGL();
-        break;
-    case Qt::Key_Escape:
-        exit(1);
-        break;
-    default:
-        break;
-    }
+void RenderingWidget::affichage(){
     mCam.setTarget(move);
     mCam.setPosition(Eigen::Vector3f(move.x(),
                                      move.y()-mCam.getZoom().y(),
-                                     fieldMesh->findZ(mCam.getPosition().x(), mCam.getPosition().z())+mCam.getZoom().z()));
-//    position.x() = move.x();
-//    position.y() = move.y() - mCam.getPosY();
-//    position.z() = fieldMesh->findZ(position.x(), position.y()) + mCam.getPosZ();
+                                     fieldMesh->findZ(mCam.getPosition().x(),
+                                                      mCam.getPosition().y()) + 10));
+    cout << "position cam Z : " << mCam.getPosition().z() << endl;
+    moveScene();
+    updateGL();
+}
+
+void RenderingWidget::run(){
+
+    QTimer *timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(affichage()));
+    timer->start(40);
+}
+
+void RenderingWidget::moveScene(){
+    float zMove = 0;
+    if(key[0]){
+        zMove =  fieldMesh->findZ(move.x(), move.y() + 0.5);
+        move.z() = zMove;
+        move.y() += 0.5;
+    }
+    if(key[1]){
+        zMove =  fieldMesh->findZ(move.x(), move.y() - 0.5);
+        move.z() = zMove;
+        move.y() -= 0.5;
+    }
+    if(key[2]){
+        zMove =  fieldMesh->findZ(move.x() - 0.5, move.y());
+        move.z() = zMove;
+        move.x() -= 0.5;
+    }
+    if(key[3]){
+        zMove =  fieldMesh->findZ(move.x() + 0.5, move.y());
+        move.z() = zMove;
+        move.x() += 0.5;
+    }
+    if(key[4]){
+        mCam.setZoom(Eigen::Vector3f(mCam.getZoom().x(), mCam.getZoom().y()-1, mCam.getZoom().z()-1));
+    }
+    if(key[5]){
+        mCam.setZoom(Eigen::Vector3f(mCam.getZoom().x(), mCam.getZoom().y()+1, mCam.getZoom().z()+1));
+    }
+    if(key[6]){
+        exit(1);
+    }
+    if(key[7]){
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    }
+    if(key[8]){
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    }
+}
+
+void RenderingWidget::keyReleaseEvent(QKeyEvent *e){
+    if(e->key() == Qt::Key_Up)
+        key[0] = 0;
+    if(e->key() == Qt::Key_Down)
+        key[1] = 0;
+    if(e->key() == Qt::Key_Left)
+        key[2] = 0;
+    if(e->key() == Qt::Key_Right)
+        key[3] = 0;
+    if(e->key() == Qt::Key_Plus)
+        key[4] = 0;
+    if(e->key() == Qt::Key_Minus)
+        key[5] = 0;
+    if(e->key() == Qt::Key_Escape)
+        key[6] = 0;
+    if(e->key() == Qt::Key_1)
+        key[7] = 0;
+    if(e->key() == Qt::Key_2)
+        key[8] = 0;
+}
+
+void RenderingWidget::keyPressEvent(QKeyEvent * e)
+{
+    if(e->key() == Qt::Key_Up)
+        key[0] = 1;
+    if(e->key() == Qt::Key_Down)
+        key[1] = 1;
+    if(e->key() == Qt::Key_Left)
+        key[2] = 1;
+    if(e->key() == Qt::Key_Right)
+        key[3] = 1;
+    if(e->key() == Qt::Key_Plus)
+        key[4] = 1;
+    if(e->key() == Qt::Key_Minus)
+        key[5] = 1;
+    if(e->key() == Qt::Key_Escape)
+        key[6] = 1;
+    if(e->key() == Qt::Key_1)
+        key[7] = 1;
+    if(e->key() == Qt::Key_2)
+        key[8] = 1;
+    //key[e->key()] = 1;
 }
 
 #include <RenderingWidget.moc>

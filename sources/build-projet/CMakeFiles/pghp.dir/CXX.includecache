@@ -6,6 +6,26 @@
 
 #IncludeRegexTransform: 
 
+../projet/src/RenderingWidget.h
+OpenGL.h
+../projet/src/OpenGL.h
+QGLWidget
+-
+QApplication
+-
+QTimer
+-
+Shader.h
+../projet/src/Shader.h
+Mesh.h
+../projet/src/Mesh.h
+Camera.h
+../projet/src/Camera.h
+Object.h
+../projet/src/Object.h
+cmath
+-
+
 /net/cremi/mmorgan/liens/travail/pghp/pghp/sources/projet/eigen3/Eigen/Cholesky
 Core
 /net/cremi/mmorgan/liens/travail/pghp/pghp/sources/projet/eigen3/Eigen/Core
@@ -898,45 +918,9 @@ ParametrizedLine.h
 
 /net/cremi/mmorgan/liens/travail/pghp/pghp/sources/projet/eigen3/Eigen/src/misc/Solve.h
 
-/net/cremi/mmorgan/liens/travail/pghp/pghp/sources/projet/src/../ObjFormat/ObjFormat.h
-ObjUtil.h
-/net/cremi/mmorgan/liens/travail/pghp/pghp/sources/projet/src/../ObjFormat/ObjUtil.h
-vector
--
-map
--
-assert.h
--
-iostream
--
-
-/net/cremi/mmorgan/liens/travail/pghp/pghp/sources/projet/src/../ObjFormat/ObjUtil.h
-string
--
-sstream
--
-vector
--
-algorithm
--
-
-/net/cremi/mmorgan/liens/travail/pghp/pghp/sources/projet/src/Mesh.cpp
-Mesh.h
-/net/cremi/mmorgan/liens/travail/pghp/pghp/sources/projet/src/Mesh.h
-Shader.h
-/net/cremi/mmorgan/liens/travail/pghp/pghp/sources/projet/src/Shader.h
-iostream
--
-fstream
--
-limits
--
-QCoreApplication
--
+/net/cremi/mmorgan/liens/travail/pghp/pghp/sources/projet/src/Camera.h
 Eigen/Geometry
 -
-../ObjFormat/ObjFormat.h
-/net/cremi/mmorgan/liens/travail/pghp/pghp/sources/projet/src/../ObjFormat/ObjFormat.h
 
 /net/cremi/mmorgan/liens/travail/pghp/pghp/sources/projet/src/Mesh.h
 vector
@@ -944,6 +928,12 @@ vector
 string
 -
 Eigen/Core
+-
+
+/net/cremi/mmorgan/liens/travail/pghp/pghp/sources/projet/src/Object.h
+Mesh.h
+-
+Shader.h
 -
 
 /net/cremi/mmorgan/liens/travail/pghp/pghp/sources/projet/src/OpenGL.h
@@ -956,6 +946,42 @@ GL/gl.h
 GL/glu.h
 -
 QGLContext
+-
+
+/net/cremi/mmorgan/liens/travail/pghp/pghp/sources/projet/src/RenderingWidget.cpp
+RenderingWidget.h
+-
+Eigen/Geometry
+-
+iostream
+-
+QKeyEvent
+-
+cstdlib
+-
+ctime
+-
+RenderingWidget.moc
+-
+
+/net/cremi/mmorgan/liens/travail/pghp/pghp/sources/projet/src/RenderingWidget.h
+OpenGL.h
+/net/cremi/mmorgan/liens/travail/pghp/pghp/sources/projet/src/OpenGL.h
+QGLWidget
+-
+QApplication
+-
+QTimer
+-
+Shader.h
+/net/cremi/mmorgan/liens/travail/pghp/pghp/sources/projet/src/Shader.h
+Mesh.h
+/net/cremi/mmorgan/liens/travail/pghp/pghp/sources/projet/src/Mesh.h
+Camera.h
+/net/cremi/mmorgan/liens/travail/pghp/pghp/sources/projet/src/Camera.h
+Object.h
+/net/cremi/mmorgan/liens/travail/pghp/pghp/sources/projet/src/Object.h
+cmath
 -
 
 /net/cremi/mmorgan/liens/travail/pghp/pghp/sources/projet/src/Shader.h
@@ -984,10 +1010,6 @@ iterator
 list
 -
 
-/usr/include/qt4/QtCore/QCoreApplication
-qcoreapplication.h
-/usr/include/qt4/QtCore/qcoreapplication.h
-
 /usr/include/qt4/QtCore/QPoint
 qpoint.h
 /usr/include/qt4/QtCore/qpoint.h
@@ -999,6 +1021,10 @@ qpoint.h
 /usr/include/qt4/QtCore/QString
 qstring.h
 /usr/include/qt4/QtCore/qstring.h
+
+/usr/include/qt4/QtCore/QTimer
+qtimer.h
+/usr/include/qt4/QtCore/qtimer.h
 
 /usr/include/qt4/QtCore/qalgorithms.h
 QtCore/qglobal.h
@@ -1138,6 +1164,16 @@ QtCore/qglobal.h
 QtCore/qatomic_bootstrap.h
 -
 QtCore/qatomic_arch.h
+-
+
+/usr/include/qt4/QtCore/qbasictimer.h
+QtCore/qglobal.h
+-
+
+/usr/include/qt4/QtCore/qbuffer.h
+QtCore/qiodevice.h
+-
+QtCore/qbytearray.h
 -
 
 /usr/include/qt4/QtCore/qbytearray.h
@@ -1318,6 +1354,10 @@ QtCore/qdatastream.h
 QtCore/qnamespace.h
 -
 
+/usr/include/qt4/QtCore/qpointer.h
+QtCore/qobject.h
+-
+
 /usr/include/qt4/QtCore/qrect.h
 QtCore/qsize.h
 -
@@ -1420,6 +1460,12 @@ windows.h
 ceconfig.h
 -
 
+/usr/include/qt4/QtCore/qtimer.h
+QtCore/qbasictimer.h
+-
+QtCore/qobject.h
+-
+
 /usr/include/qt4/QtCore/qvariant.h
 QtCore/qatomic.h
 -
@@ -1458,6 +1504,36 @@ QtCore/QPointF
 QtCore/QPoint
 -
 
+/usr/include/qt4/QtGui/QApplication
+qapplication.h
+/usr/include/qt4/QtGui/qapplication.h
+
+/usr/include/qt4/QtGui/QKeyEvent
+qevent.h
+/usr/include/qt4/QtGui/qevent.h
+
+/usr/include/qt4/QtGui/qapplication.h
+QtCore/qcoreapplication.h
+-
+QtGui/qwindowdefs.h
+-
+QtCore/qpoint.h
+-
+QtCore/qsize.h
+-
+QtGui/qcursor.h
+-
+QtGui/qdesktopwidget.h
+-
+QtGui/qwidget.h
+-
+QtGui/qpalette.h
+-
+QtGui/qrgb.h
+-
+QtGui/qtransportauth_qws.h
+-
+
 /usr/include/qt4/QtGui/qbrush.h
 QtCore/qpair.h
 -
@@ -1490,6 +1566,10 @@ QtCore/qstringlist.h
 QtCore/qpoint.h
 -
 QtGui/qwindowdefs.h
+-
+
+/usr/include/qt4/QtGui/qdesktopwidget.h
+QtGui/qwidget.h
 -
 
 /usr/include/qt4/QtGui/qdrag.h
@@ -1746,6 +1826,22 @@ QtCore/qpoint.h
 QtCore/qrect.h
 -
 
+/usr/include/qt4/QtGui/qtransportauth_qws.h
+QtCore/qglobal.h
+-
+QtCore/qobject.h
+-
+QtCore/qhash.h
+-
+QtCore/qstring.h
+-
+QtCore/qbuffer.h
+-
+QtCore/qpointer.h
+-
+sys/types.h
+-
+
 /usr/include/qt4/QtGui/qwidget.h
 QtGui/qwindowdefs.h
 -
@@ -1798,6 +1894,10 @@ QtGui/qmatrix.h
 qgl.h
 /usr/include/qt4/QtOpenGL/qgl.h
 
+/usr/include/qt4/QtOpenGL/QGLWidget
+qgl.h
+/usr/include/qt4/QtOpenGL/qgl.h
+
 /usr/include/qt4/QtOpenGL/qgl.h
 QtGui/qwidget.h
 -
@@ -1829,4 +1929,8 @@ QtGui/qcolor.h
 -
 QtCore/qvector.h
 -
+
+RenderingWidget.moc
+../projet/src/RenderingWidget.h
+/../projet/src/RenderingWidget.h
 
