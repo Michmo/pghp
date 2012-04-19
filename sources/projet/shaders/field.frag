@@ -29,5 +29,5 @@ void main()
             * vec4(diffusionCoeff(normal.xyz, normalize(lightDir))
             * lightColor
             + vec3(specularCoeff(normal.xyz, normalize(lightDir), normalize(posCam - scenePosition) , shininess)),1.0);
-            out_color = vec4(normal/2.+.5, 1.0);
+            //out_color = vec4(normal/2.+.5, 1.0);
 }

@@ -281,47 +281,46 @@ void Mesh::computeNormals()
 }
 
 float Mesh::findZ(float x, float y) {
-  float z = 2, zTmp = 0;
-  int nb_vertices = 0;
-  float zValues[3];
-  for(VertexArray::iterator vx=mVertices.begin(); vx!=mVertices.end(); ++vx){
-    if(vx->position.x() < x+1 && vx->position.x() > x-1
-       && vx->position.y() <= y+1 && vx->position.y() > y-1 ){
-      zValues[nb_vertices] = vx->position.z();
-      nb_vertices ++;
-      if(nb_vertices  == 3){
-        break;
-      }
-    }
-  }
-
-  if(nb_vertices == 0){
+    int cx, cy, fx, fy;
+    cx = ceil(x);
+    cy = ceil(y);
+    fx = floor(x);
+    fy = floor(y);
+    float z = mVertices[fy+fx*640].position.z();
+    z += mVertices[fy+cx*640].position.z();
+    z += mVertices[cy+fx*640].position.z();
+    z += mVertices[cy+cx*640].position.z();
+    z /= 4;
+    cout << "x = " << x << "y = " << y << "z = " << z << endl;
     return z;
-  }
-
-  for(int i = 0; i < nb_vertices; i++)
-    zTmp += zValues[i];
-  z = zTmp/nb_vertices;
-  return z;
 }
 
 Eigen::Vector3f Mesh::findNormal(float x, float y){
   Eigen::Vector3f normal = Eigen::Vector3f::UnitX();
-  for(VertexArray::iterator vx=mVertices.begin(); vx!=mVertices.end(); ++vx){
-    if(vx->position.x() <= x+0.5 && vx->position.x() > x-0.5
-       && vx->position.y() < y+0.5 && vx->position.y() > y-0.5 ){
-      if(vx->normal.x() >= 0 && vx->normal.y() >= 0 && vx->normal.z() >= 0){
-        normal.x() = vx->normal.x();
-        normal.y() = vx->normal.y();
-        normal.z() = vx->normal.z();
-      }
-      else{
-        normal.x() = 0;
-        normal.y() = 0;
-        normal.z() = 0;
-      }
-    }
-  }
+//  for(VertexArray::iterator vx=mVertices.begin(); vx!=mVertices.end(); ++vx){
+//    if(vx->position.x() <= x+0.5 && vx->position.x() > x-0.5
+//       && vx->position.y() < y+0.5 && vx->position.y() > y-0.5 ){
+//      if(vx->normal.x() >= 0 && vx->normal.y() >= 0 && vx->normal.z() >= 0){
+//        normal.x() = vx->normal.x();
+//        normal.y() = vx->normal.y();
+//        normal.z() = vx->normal.z();
+//      }
+//      else{
+//        normal.x() = 0;
+//        normal.y() = 0;
+//        normal.z() = 0;
+//      }
+//    }
+//  }
+//  return normal;
+  int cx, cy, fx, fy;
+  cx = ceil(x);
+  cy = ceil(y);
+  fx = floor(x);
+  fy = floor(y);
+  normal.x() = mVertices[fy+fx*640].normal.x() + mVertices[fy+cx*640].normal.x() + mVertices[cy+fx*640].normal.x() + mVertices[cy+cx*640].normal.x();
+  normal.x() = mVertices[fy+fx*640].normal.y() + mVertices[fy+cx*640].normal.y() + mVertices[cy+fx*640].normal.y() + mVertices[cy+cx*640].normal.y();
+  normal.x() = mVertices[fy+fx*640].normal.z() + mVertices[fy+cx*640].normal.z() + mVertices[cy+fx*640].normal.z() + mVertices[cy+cx*640].normal.z();
   return normal;
 }
 
