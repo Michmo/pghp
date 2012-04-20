@@ -37,7 +37,7 @@ void main()
     float fogCoord = (gl_FragCoord.z / gl_FragCoord.w) / far;
     float fogDensity = 6;
     float fog = fogDensity * fogCoord;
-    vec4 fogColor = vec4(1,1,1,0);
+    vec4 fogColor = vec4(0.8,0.8,0.8,0);
     out_color = mix(fogColor, out_color, clamp(1.0-fog, 0.0,1.0));
 
 

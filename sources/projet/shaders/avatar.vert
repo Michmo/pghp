@@ -17,7 +17,7 @@ uniform mat4 matriceTransformationAvatar;
 
 void main()
 {
-  vec3 test = vec3(vtx_position.y, -vtx_position.x, vtx_position.z);
+  vec3 test = vec3(vtx_position.x, vtx_position.y, vtx_position.z);
   //vec3 test = vec3(vtx_position.x, vtx_position.y, vtx_position.z);
   vec3 position = test + move;
   scenePosition = vec3(matriceSceneAvatar *vec4(position,1));
